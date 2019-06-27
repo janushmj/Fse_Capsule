@@ -1,0 +1,13 @@
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\TaskManagerBusiness.dll.config
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\TaskManagerBusiness.dll
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\TaskManagerBusiness.pdb
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\TaskManagerDataAccess.dll
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\TaskManagerDataAccess.pdb
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\TaskManagerDataAccess.dll.config
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\obj\Debug\TaskManagerBAL.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\obj\Debug\TaskManagerBusiness.dll
+C:\Users\Administrator\Downloads\TaskManager-master\TaskManager-master\TaskManagerAPI\TaskManagerBusiness\obj\Debug\TaskManagerBusiness.pdb
