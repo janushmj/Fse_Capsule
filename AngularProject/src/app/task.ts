@@ -8,8 +8,3 @@ export class Task {
     ParentTaskName: string = "";
 }
 
-export class DropdownList {
-    value: number;
-    label: string;
-}
-
