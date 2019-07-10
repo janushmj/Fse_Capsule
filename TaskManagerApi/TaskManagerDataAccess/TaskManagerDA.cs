@@ -22,7 +22,7 @@ namespace TaskManagerDataAccess
                 return FSECapsuleEntities.ParentTasks.ToList<ParentTask>();
             }
         }
-        
+
         public Task ReadTask(int? TaskId)
         {
             using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
@@ -77,7 +77,104 @@ namespace TaskManagerDataAccess
                 currentTask.End_Date = task.End_Date;
                 FSECapsuleEntities.SaveChanges();
             }
-            
+
+        }
+
+        public List<User> ReadAllUser()
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                return FSECapsuleEntities.Users.ToList<User>();
+            }
+        }
+
+        public User ReadUser(int? userId)
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                return FSECapsuleEntities.Users.Where(t => t.User_ID == userId).FirstOrDefault();
+            }
+        }
+
+        public void AddUser(User user)
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                FSECapsuleEntities.Users.Add(user);
+                FSECapsuleEntities.SaveChanges();
+            }
+        }
+
+        public void UpdateUser(User user)
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                User currentUser = FSECapsuleEntities.Users.Where(t => t.User_ID == user.User_ID).FirstOrDefault();
+                currentUser.Employee_ID = user.Employee_ID;
+                currentUser.FirstName = user.FirstName;
+                currentUser.LastName = user.LastName;
+                currentUser.Task_ID = user.Task_ID;
+                currentUser.Project_ID = user.Project_ID;
+                FSECapsuleEntities.SaveChanges();
+            }
+        }
+
+        public void DeleteUser(User user)
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                User currentUser = FSECapsuleEntities.Users.Where(t => t.User_ID == user.User_ID).FirstOrDefault();
+                FSECapsuleEntities.Users.Remove(currentUser);
+                FSECapsuleEntities.SaveChanges();
+            }
+        }
+
+        public List<Project> ReadAllProjects()
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                return FSECapsuleEntities.Projects.ToList<Project>();
+            }
+        }
+
+        public Project ReadProject(int? projectId)
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                return FSECapsuleEntities.Projects.Where(t => t.Project_ID == projectId).FirstOrDefault();
+            }
+        }
+
+        public void AddProject(Project project)
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                FSECapsuleEntities.Projects.Add(project);
+                FSECapsuleEntities.SaveChanges();
+            }
+        }
+
+        public void UpdateProject(Project project)
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                Project currentProject = FSECapsuleEntities.Projects.Where(t => t.Project_ID == project.Project_ID).FirstOrDefault();
+                currentProject.Project1 = project.Project1;
+                currentProject.Start_Date = project.Start_Date;
+                currentProject.End_Date = project.End_Date;
+                currentProject.Priority = project.Priority;
+                FSECapsuleEntities.SaveChanges();
+            }
+        }
+
+        public void DeleteProject(Project project)
+        {
+            using (FSECapsuleEntities FSECapsuleEntities = new FSECapsuleEntities())
+            {
+                Project currentProject = FSECapsuleEntities.Projects.Where(t => t.Project_ID == project.Project_ID).FirstOrDefault();
+                FSECapsuleEntities.Projects.Remove(currentProject);
+                FSECapsuleEntities.SaveChanges();
+            }
         }
     }
 }

@@ -15,27 +15,18 @@ namespace TaskManagerDataAccess
 using System;
     using System.Collections.Generic;
     
-public partial class ParentTask
+public partial class Project
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public ParentTask()
-    {
+    public int Project_ID { get; set; }
 
-        this.Tasks = new HashSet<Task>();
+    public string Project1 { get; set; }
 
-    }
+    public System.DateTime Start_Date { get; set; }
 
+    public System.DateTime End_Date { get; set; }
 
-    public int Parent_ID { get; set; }
-
-    public string Parent_Task { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Task> Tasks { get; set; }
+    public int Priority { get; set; }
 
 }
 
