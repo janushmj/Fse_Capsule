@@ -114,5 +114,170 @@ namespace TaskManagerApi.Controllers
             TaskManagerBL taskManagerBL = new TaskManagerBL();
             taskManagerBL.EndTask(id);
         }
+
+        [HttpGet]
+        [ActionName("GetAllUsers")]
+        // GET: api/TaskManager
+        public IEnumerable<User> GetAllUsers()
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            List<User> lstUser = new List<User>();
+            foreach (var user in taskManagerBL.ReadAllUser())
+            {
+                lstUser.Add(new User()
+                {
+                    UserId = user.User_ID,
+                    EmployeeId = user.Employee_ID,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    ProjectId = user.Project_ID,
+                    TaskId = user.Task_ID
+                });
+            }
+            return lstUser;
+        }
+
+        [HttpGet]
+        [ActionName("GetUser")]
+        // GET: api/TaskManager/5
+        public User GetUser(int id)
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            DA.User user = taskManagerBL.ReadUser(id);
+            if (user != null)
+                return new User()
+                {
+                    UserId = user.User_ID,
+                    EmployeeId = user.Employee_ID,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    ProjectId = user.Project_ID,
+                    TaskId = user.Task_ID
+                };
+            return null;
+        }
+
+        [HttpPost]
+        [ActionName("AddUser")]
+        // POST: api/TaskManager
+        public void AddUser([FromBody]User user)
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            taskManagerBL.AddUser(new DA.User()
+            {
+                Task_ID = user.TaskId,
+                Project_ID = user.ProjectId,
+                LastName = user.LastName,
+                FirstName = user.FirstName,
+                Employee_ID = user.EmployeeId
+            });
+        }
+
+        [HttpPost]
+        [ActionName("UpdateUser")]
+        // PUT: api/TaskManager/5
+        public void UpdateUser([FromBody]User user)
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            taskManagerBL.UpdateUser(new DA.User()
+            {
+                User_ID = user.UserId,
+                Task_ID = user.TaskId,
+                Project_ID = user.ProjectId,
+                LastName = user.LastName,
+                FirstName = user.FirstName,
+                Employee_ID = user.EmployeeId
+            });
+        }
+
+        [HttpGet]
+        [ActionName("DeleteUser")]
+        // DELETE: api/TaskManager/5
+        public void DeleteUser(int id)
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            taskManagerBL.DeleteUser(id);
+        }  
+
+        [HttpGet]
+        [ActionName("GetAllProjects")]
+        // GET: api/TaskManager
+        public IEnumerable<Project> GetAllProjects()
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            List<Project> lstProject = new List<Project>();
+            foreach (var project in taskManagerBL.ReadAllProjects())
+            {
+                lstProject.Add(new Project()
+                {
+                    Name = project.Project1,
+                    ProjectId = project.Project_ID,
+                    EndDate = project.End_Date.ToString("dd/MM/yyyy"),
+                    StartDate = project.Start_Date.ToString("dd/MM/yyyy"),
+                    Priority = project.Priority
+                });
+            }
+            return lstProject;
+        }
+
+        [HttpGet]
+        [ActionName("GetProject")]
+        // GET: api/TaskManager/5
+        public Project GetProject(int id)
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            DA.Project project = taskManagerBL.ReadProject(id);
+            if (project != null)
+                return new Project()
+                {
+                    Name = project.Project1,
+                    ProjectId = project.Project_ID,
+                    EndDate = project.End_Date.ToString("dd/MM/yyyy"),
+                    StartDate = project.Start_Date.ToString("dd/MM/yyyy"),
+                    Priority = project.Priority
+                };
+            return null;
+        }
+
+        [HttpPost]
+        [ActionName("AddProject")]
+        // POST: api/TaskManager
+        public void AddProject([FromBody]Project project)
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            taskManagerBL.AddProject(new DA.Project()
+            {
+                Project1 = project.Name,
+                Priority = project.Priority,
+                End_Date = Convert.ToDateTime(project.EndDate),
+                Start_Date = Convert.ToDateTime(project.StartDate)
+            });
+        }
+
+
+        [HttpPost]
+        [ActionName("UpdateProject")]
+        // PUT: api/TaskManager/5
+        public void UpdateProject([FromBody]Project project)
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            taskManagerBL.UpdateProject(new DA.Project()
+            {
+                Project_ID = project.ProjectId,
+                Project1 = project.Name,
+                Priority = project.Priority,
+                End_Date = Convert.ToDateTime(project.EndDate),
+                Start_Date = Convert.ToDateTime(project.StartDate)
+            });
+        }
+
+        [HttpGet]
+        [ActionName("DeleteProject")]
+        // DELETE: api/TaskManager/5
+        public void DeleteProject(int id)
+        {
+            TaskManagerBL taskManagerBL = new TaskManagerBL();
+            taskManagerBL.DeleteProject(id);
+        }
     }
 }

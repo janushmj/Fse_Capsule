@@ -7,10 +7,10 @@ namespace TaskManagerApi.Models
 {
     public class Project
     {
-        public int Project_Id { get; set; }
+        public int ProjectId { get; set; }
         public string Name { get; set; }
-        public string Start_Date { get; set; }
-        public string End_Date { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
         public int Priority { get; set; }
     }
 }
