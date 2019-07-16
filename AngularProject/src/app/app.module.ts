@@ -12,13 +12,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddUserComponent } from './add-user/add-user.component';
+import { AddProjectComponent } from './add-project/add-project.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTaskComponent,
     ViewTaskComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    AddUserComponent,
+    AddProjectComponent
   ],
   imports: [
     BrowserModule,
