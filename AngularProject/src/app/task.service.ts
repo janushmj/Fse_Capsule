@@ -4,7 +4,8 @@ import { Task } from './task';
 import { ParentTask } from './parent-task';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
-
+import { User } from './user';
+import { Project } from './project';
 
 
 @Injectable({
@@ -38,6 +39,46 @@ export class TaskService {
 
   public endTask(taskId :number): Observable<any>{
   return this.http.get<any>(this.BaseUrl + '/deleteTask'+  taskId);
+  }
+
+  public getAllUsers(): Observable<User[]>{
+    return this.http.get<User[]>(this.BaseUrl + '/GetAllUsers');
+  }
+
+  public getUser(userId: number): Observable<User>{
+    return this.http.get<User>(this.BaseUrl + '/GetUser/' + userId);
+  }
+
+  public addUser(user: User): Observable<any>{
+    return this.http.post<any>(this.BaseUrl + '/AddUser', user);
+  }
+
+  public deleteUser(projectId: number): Observable<any>{
+    return this.http.get<any>(this.BaseUrl + '/DeleteUser/' +  projectId);
+  }
+
+  public updateUser(user: User): Observable<any>{
+    return this.http.post<any>(this.BaseUrl + '/UpdateUser', user);
+  }
+
+  public getAllProjects(): Observable<Project[]>{
+    return this.http.get<Project[]>(this.BaseUrl + '/GetAllProjects');
+  }
+
+  public getProject(projectId: number): Observable<Project>{
+    return this.http.get<Project>(this.BaseUrl + '/GetProject/' + projectId);
+  }
+
+  public addProject(project: Project): Observable<any>{
+    return this.http.post<any>(this.BaseUrl + '/AddProject', project);
+  }
+
+  public deleteProject(projectId: number): Observable<any>{
+    return this.http.get<any>(this.BaseUrl + '/DeleteProject/' +  projectId);
+  }
+
+  public updateProject(project: Project): Observable<any>{
+    return this.http.post<any>(this.BaseUrl + '/UpdateProject', project);
   }
 
 }
