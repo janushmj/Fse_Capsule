@@ -3,15 +3,15 @@
 </div>
 
 <div class="form-group row hide" style="display: none">
-  <label class="col-sm-2 col-form-label">Project Id:</label>
+  <label class="col-sm-2 col-form-label">Project Id :</label>
   <div class="col-sm-5">
-    <input [(ngModel)]="addUser.ProjetId" type="text" class="form-control" id="name" required>
+    <input [(ngModel)]="addProject.ProjectId" type="text" class="form-control" id="name" required>
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
-  <label class="col-sm-2 col-form-label">Project</label>
+  <label class="col-sm-2 col-form-label">Project :</label>
   <div class="col-sm-5">
-    <select [(ngModel)]="addTask.ProjectId" class="form-control" id="name" name="addTask.ProjectId">
+    <select [(ngModel)]="addProject.ProjectId" class="form-control" id="name" name="addProject.ProjectId">
       <option selected="" value=""></option>
       <option [ngValue]="pt.ParentId" *ngFor="let pt of availableParentTasks">
         {{pt.ProjectName}}
@@ -20,37 +20,35 @@
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
-  <label class="col-sm-2 col-form-label">Priority:</label>
+  <label class="col-sm-2 col-form-label">Priority :</label>
   <div class="col-sm-5">
-    <ng5-slider [(value)]="addTask.Priority" [options]="options" name="Priority"></ng5-slider>
+    <ng5-slider [(value)]="addProject.Priority" [options]="options" name="Priority"></ng5-slider>
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
-  <label class="col-sm-2 col-form-label">Task:</label>
+  <label class="col-sm-2 col-form-label">Task :</label>
   <div class="col-sm-5">
-    <input [(ngModel)]="addUser.Task" type="text" class="form-control" id="name" required>
+    <input [(ngModel)]="addProject.ProjectId" type="text" class="form-control" id="name" required>
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
-  <label class="col-sm-2 col-form-label">Parent Task:</label>
+  <label class="col-sm-2 col-form-label">Parent Task :</label>
   <div class="col-sm-5">
-    <select [(ngModel)]="addTask.ParentId" class="form-control" id="name" name="addTask.ParentId">
+    <select [(ngModel)]="addProject.ProjectId" class="form-control" id="name" name="addProject.ProjectId">
       <option selected="" value=""></option>
-      <option [ngValue]="pt.ParentId" *ngFor="let pt of availableParentTasks">
-        {{pt.ParentTaskName}}
+      <option [ngValue]="pt.ParentId" *ngFor="let pt of availableParentTasks">        
       </option>
     </select>
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
-  <label class="col-sm-2 col-form-label">Start Date</label>
+  <label class="col-sm-2 col-form-label">Start Date :</label>
   <div class="col-sm-5">
-
     <input type="date" [ngModel]="start | date:'yyyy-MM-dd'" (ngModelChange)="start = $event" class="form-control">
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
-  <label class="col-sm-2 col-form-label">End Date</label>
+  <label class="col-sm-2 col-form-label">End Date :</label>
   <div class="col-sm-5">
     <input type="date" [ngModel]="end | date:'yyyy-MM-dd'" (ngModelChange)="end = $event" class="form-control" placeholder="End Date"
       name="end">
@@ -62,32 +60,106 @@
   <div class="col-sm-5">
     <button type="submit" class="btn btn-success" (click)="saveTask()">Add</button>
     <button type="button" class="btn btn-primary">Update</button>
-    <button type="button" class="btn btn-warning">Cancel</button>
+    <button type="button" class="btn btn-danger">Cancel</button>
   </div>
 </div>
 <div class="col-md-12">
   <h3>Project Details</h3>
-  <div class="form-group row" style=font-weight:400>
-    <label class="col-sm-2 col-form-label">Project:</label>
-    <div class="col-sm-5">
-      <input [(ngModel)]="addUser.FirstName" type="text" class="form-control" id="name" required>
+  <div class="row" style=font-weight:400>
+    <label class="col-sm-2 col-form-label">Task :</label>
+    <div class="col-lg-3">
+      <input class="form-control" name="task" placeholder="Task">
+    </div>
+    <label class="col-sm-2 col-form-label">Parent Task :</label>
+    <div class="col-lg-3">
+      <input class="form-control" name="Parent Task" placeholder="Parent Task">
     </div>
   </div>
-  <div class="form-group row" style=font-weight:400>
-    <label class="col-sm-2 col-form-label">Project details:</label>
-    <div class="col-sm-5">
-      <input [(ngModel)]="addUser.LastName" type="text" class="form-control" id="name" required>
+  <div class="row">
+    <div class="col-lg-12">&nbsp;</div>
+  </div>
+  <div class="row" style=font-weight:400>
+    <label class="col-sm-2 col-form-label">Priority From :</label>
+    <div class="col-lg-3">
+      <input class="form-control" name="PriorityFrom" placeholder="0"  type="number">
+    </div>
+    <label class="col-sm-2 col-form-label" style=font-weight:400>Priority To : </label>
+    <div class="col-lg-3">
+      <input class="form-control" name="PriorityTo" placeholder="30 " type="number">
     </div>
   </div>
-  <div class="form-group row" style=font-weight:400>
-    <label class="col-sm-2 col-form-label">Project List:</label>
-    <div class="col-sm-5">
-      <input [(ngModel)]="addUser.EmployeeId" type="text" class="form-control" id="name" required>
+  <div class="row">
+    <div class="col-lg-12">&nbsp;</div>
+  </div>
+
+  <div class="row" style =font-weight:400>
+    <label class="col-sm-2 col-form-label">Start Date :</label>
+    <div class="col-lg-3">
+      <input type="date" [ngModel]="start | date:'yyyy-MM-dd'" (ngModelChange)="start = $event" class="form-control">
+    </div>
+    <label class="col-sm-2 col-form-label" style =font-weight:400>End Date :</label>
+    <div class="col-lg-3">
+      <input type="date" [ngModel]="end | date:'yyyy-MM-dd'" (ngModelChange)="end = $event" class="form-control">
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg-12">&nbsp;</div>
+  </div>
   <div class="form-group row" style=font-weight:400>
-    <div class="col-md-12 text-center"> 
-      <button id="button" name="button" class="btn btn-primary">Search</button> 
+    <div class="col-md-10 text-center">
+      <button id="button" name="button" class="btn btn-primary">Search</button>
     </div>
   </div>
+</div>
+<div class="table-responsive table-container">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td class="col-sm-2" style=font-weight:500>
+          <label for="Name">Sort By:</label>
+        </td>
+        <td class="col-sm-2"></td>
+        <td class="col-sm-2" style="float:none">
+          <button type="button" class="btn btn-success" (click)="SortByFirstName()">ProjectName</button>
+        </td>
+        <td class="col-sm-2" style="float:none">
+          <button type="button" class="btn btn-warning" (click)="SortByLastName()">Priority</button>
+        </td>
+        <td class="col-sm-2" style="float:none">
+          <button type="button" class="btn" (click)="SortByEmployeeId()">Start_Date</button>
+        </td>
+        <td class="col-sm-2" style="float:none">
+          <button type="button" class="btn" (click)="SortByEmployeeId()">End_Date</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-lg-12" style=font-weight:400>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Priority</th>
+          <th>Start_Date</th>
+          <th>End_Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of availableProjects">
+          <td class="hidden">{{project.ProjectId}}</td>
+          <td>{{project.Name}}</td>
+          <td>{{project.Priority}}</td>
+          <td>{{project.StartDate}}</td>
+          <td>{{project.EndDate}}</td>
+          <td>
+            <button (click)="editPrject(project)" class="btn btn-info">Update</button>
+            <button (click)="deleteProject(project)" style="margin-left: 20px;" class="btn btn-info">Discard</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>

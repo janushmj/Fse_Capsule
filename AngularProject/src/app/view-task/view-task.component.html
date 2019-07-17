@@ -3,11 +3,11 @@
 </div>
 
 <div class="row" style =font-weight:400>
-  <label class="col-sm-2 col-form-label">Task : </label>
+  <label class="col-sm-2 col-form-label">Task :</label>
   <div class="col-lg-3">
     <input class="form-control" name="task" placeholder="Task" [(ngModel)]="taskSearch.TaskName">
   </div>
-  <label class="col-sm-2 col-form-label">Parent Task : </label>
+  <label class="col-sm-2 col-form-label">Parent Task :</label>
   <div class="col-lg-3">
     <input class="form-control" name="Parent Task" placeholder="Parent Task" [(ngModel)]="taskSearch.ParentName">
   </div>
@@ -16,7 +16,7 @@
   <div class="col-lg-12">&nbsp;</div>
 </div>
 <div class="row" style =font-weight:400>
-  <label class="col-sm-2 col-form-label">Priority From : </label>
+  <label class="col-sm-2 col-form-label">Priority From :</label>
   <div class="col-lg-3">
     <input class="form-control" name="PriorityFrom" placeholder="Priority From" [(ngModel)]="taskSearch.PriorityFrom"
       type="number">
@@ -32,17 +32,16 @@
 </div>
 
 <div class="row" style =font-weight:400>
-  <label class="col-sm-2 col-form-label">Start Date: </label>
+  <label class="col-sm-2 col-form-label">Start Date :</label>
   <div class="col-lg-3">
-    <input class="form-control" type="date" name="StartDate" placeholder="Start Date"
-      [(ngModel)]="taskSearch.StartDate">
+    <input type="date" [ngModel]="start | date:'yyyy-MM-dd'" (ngModelChange)="start = $event" class="form-control">
   </div>
-  <label class="col-sm-2 col-form-label" style =font-weight:400>End Date : </label>
+  <label class="col-sm-2 col-form-label" style =font-weight:400>End Date :</label>
   <div class="col-lg-3">
-    <input class="form-control" type="date" name="End date" placeholder="End Date" [(ngModel)]="parentTask"
-      [(ngModel)]="taskSearch.EndDate">
+    <input type="date" [ngModel]="end | date:'yyyy-MM-dd'" (ngModelChange)="end = $event" class="form-control">
   </div>
 </div>
+
 <div class="row">
   <div class="col-lg-12">&nbsp;</div>
 </div>
