@@ -30,9 +30,9 @@
   <div class="col-sm-3">
   </div>
   <div class="col-sm-5">
-    <button type="submit" class="btn btn-success" (click)="saveTask()">Add</button>
-    <button type="button" class="btn btn-primary">Update</button>
-    <button type="button" class="btn btn-danger">Cancel</button>
+    <button type="submit" class="btn btn-success" (click)="newUser()">Add</button>
+    <button type="button" class="btn btn-primary"(click)="updateUser()" >Update</button>
+    <button type="button" class="btn btn-danger"(click)="cancelUser()">Cancel</button>
   </div>
 </div>
 <div class="col-md-12">
@@ -40,24 +40,24 @@
   <div class="form-group row" style=font-weight:400>
     <label class="col-sm-2 col-form-label">First Name :</label>
     <div class="col-sm-5">
-      <input [(ngModel)]="addUser.FirstName" type="text" class="form-control" id="name" required>
+      <input [(ngModel)]="userSearch.FirstName" type="text" class="form-control" id="name" required>
     </div>
   </div>
   <div class="form-group row" style=font-weight:400>
     <label class="col-sm-2 col-form-label">Last Name :</label>
     <div class="col-sm-5">
-      <input [(ngModel)]="addUser.LastName" type="text" class="form-control" id="name" required>
+      <input [(ngModel)]="userSearch.LastName" type="text" class="form-control" id="name" required>
     </div>
   </div>
   <div class="form-group row" style=font-weight:400>
     <label class="col-sm-2 col-form-label">Employee Id :</label>
     <div class="col-sm-5">
-      <input [(ngModel)]="addUser.EmployeeId" type="text" class="form-control" id="name" required>
+      <input [(ngModel)]="userSearch.EmployeeId" type="text" class="form-control" id="name" required>
     </div>
   </div>
   <div class="form-group row" style=font-weight:400>
     <div class="col-md-12 text-center">
-      <button id="button" name="button" class="btn btn-primary">Search</button>
+      <button id="button" name="button" class="btn btn-primary" (click)="searchUsers()">Search</button>
     </div>
   </div>
 </div>
@@ -87,10 +87,11 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
+          <th>S.No</th>
           <th>FirstName</th>
           <th>LastName</th>
           <th>EmployeeId</th>
-          <th></th>
+          <th>Operations</th>
         </tr>
       </thead>
       <tbody>
@@ -100,8 +101,8 @@
           <td>{{user.LastName}}</td>
           <td>{{user.EmployeeId}}</td>
           <td>
-            <button (click)="editUser(user)" class="btn btn-info">Update</button>
-            <button (click)="deleteUser(user)" style="margin-left: 20px;" class="btn btn-info">Delete</button>
+            <button (click)="editUser(user)" class="btn btn-primary">Update</button>
+            <button (click)="deleteUser(user)" style="margin-left: 20px;" class="btn btn-danger">Delete</button>
           </td>
         </tr>
       </tbody>

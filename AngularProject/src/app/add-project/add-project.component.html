@@ -9,36 +9,15 @@
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
-  <label class="col-sm-2 col-form-label">Project :</label>
+  <label class="col-sm-2 col-form-label">Project_Name:</label>
   <div class="col-sm-5">
-    <select [(ngModel)]="addProject.ProjectId" class="form-control" id="name" name="addProject.ProjectId">
-      <option selected="" value=""></option>
-      <option [ngValue]="pt.ParentId" *ngFor="let pt of availableParentTasks">
-        {{pt.ProjectName}}
-      </option>
-    </select>
+    <input [(ngModel)]="addProject.Name" type="text" class="form-control" id="name" required>
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
   <label class="col-sm-2 col-form-label">Priority :</label>
   <div class="col-sm-5">
     <ng5-slider [(value)]="addProject.Priority" [options]="options" name="Priority"></ng5-slider>
-  </div>
-</div>
-<div class="form-group row" style=font-weight:400>
-  <label class="col-sm-2 col-form-label">Task :</label>
-  <div class="col-sm-5">
-    <input [(ngModel)]="addProject.ProjectId" type="text" class="form-control" id="name" required>
-  </div>
-</div>
-<div class="form-group row" style=font-weight:400>
-  <label class="col-sm-2 col-form-label">Parent Task :</label>
-  <div class="col-sm-5">
-    <select [(ngModel)]="addProject.ProjectId" class="form-control" id="name" name="addProject.ProjectId">
-      <option selected="" value=""></option>
-      <option [ngValue]="pt.ParentId" *ngFor="let pt of availableParentTasks">        
-      </option>
-    </select>
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
@@ -55,24 +34,31 @@
   </div>
 </div>
 <div class="form-group row" style=font-weight:400>
+    <label class="col-sm-2 col-form-label">Manager :</label>
+    <div class="col-sm-5">
+      <select [(ngModel)]="addProject.ManagerId" class="form-control" id="name">
+        <option selected="" value=""></option>
+        <option [ngValue]="pt.UserId" *ngFor="let pt of availableUsers">     
+          {{pt.FirstName}} {{pt.LastName}}   
+        </option>
+      </select>
+    </div>
+  </div>
+<div class="form-group row" style=font-weight:400>
   <div class="col-sm-3">
   </div>
   <div class="col-sm-5">
-    <button type="submit" class="btn btn-success" (click)="saveTask()">Add</button>
-    <button type="button" class="btn btn-primary">Update</button>
-    <button type="button" class="btn btn-danger">Cancel</button>
+    <button type="submit" class="btn btn-success" (click)="newProject()">Add</button>
+    <button type="button" class="btn btn-primary" (click)="updateProject()">Update</button>
+    <button type="button" class="btn btn-danger" (click)="cancelProject()">Cancel</button>
   </div>
 </div>
 <div class="col-md-12">
   <h3>Project Details</h3>
   <div class="row" style=font-weight:400>
-    <label class="col-sm-2 col-form-label">Task :</label>
+    <label class="col-sm-2 col-form-label">Project :</label>
     <div class="col-lg-3">
-      <input class="form-control" name="task" placeholder="Task">
-    </div>
-    <label class="col-sm-2 col-form-label">Parent Task :</label>
-    <div class="col-lg-3">
-      <input class="form-control" name="Parent Task" placeholder="Parent Task">
+      <input [(ngModel)]="projectSearch.Name" type="text" class="form-control" id="name" required>
     </div>
   </div>
   <div class="row">
@@ -81,11 +67,11 @@
   <div class="row" style=font-weight:400>
     <label class="col-sm-2 col-form-label">Priority From :</label>
     <div class="col-lg-3">
-      <input class="form-control" name="PriorityFrom" placeholder="0"  type="number">
+      <input [(ngModel)]="projectSearch.PriorityFrom" type="text" class="form-control" id="PriorityFrom" required>
     </div>
     <label class="col-sm-2 col-form-label" style=font-weight:400>Priority To : </label>
     <div class="col-lg-3">
-      <input class="form-control" name="PriorityTo" placeholder="30 " type="number">
+      <input  [(ngModel)]="projectSearch.PriorityTo" type="text" class="form-control" id="PriorityTo" required>
     </div>
   </div>
   <div class="row">
@@ -107,7 +93,7 @@
   </div>
   <div class="form-group row" style=font-weight:400>
     <div class="col-md-10 text-right">
-      <button id="button" name="button" class="btn btn-primary">Search</button>
+      <button id="button" name="button" class="btn btn-primary" (click)="searchProjects">Search</button>
     </div>
   </div>
 </div>
@@ -120,16 +106,16 @@
         </td>
         <td class="col-sm-2"></td>
         <td class="col-sm-2" style="float:none">
-          <button type="button" class="btn btn-success" (click)="SortByFirstName()">ProjectName</button>
+          <button type="button" class="btn btn-success" (click)="SortByName()">Project_Name</button>
         </td>
         <td class="col-sm-2" style="float:none">
-          <button type="button" class="btn btn-warning" (click)="SortByLastName()">Priority</button>
+          <button type="button" class="btn btn-warning" (click)="SortByPriority()">Priority</button>
         </td>
         <td class="col-sm-2" style="float:none">
-          <button type="button" class="btn" (click)="SortByEmployeeId()">Start_Date</button>
+          <button type="button" class="btn" (click)="SortByStartDate()">Start_Date</button>
         </td>
         <td class="col-sm-2" style="float:none">
-          <button type="button" class="btn" (click)="SortByEmployeeId()">End_Date</button>
+          <button type="button" class="btn" (click)="SortByEndDate()">End_Date</button>
         </td>
       </tr>
     </tbody>
@@ -140,23 +126,24 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
+          <th>S.No</th>
           <th>Name</th>
           <th>Priority</th>
-          <th>Start_Date</th>
-          <th>End_Date</th>
-          <th></th>
+          <th>StartDate</th>
+          <th>EndDate</th>
+          <th>Operations</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of availableProjects">
+        <tr *ngFor="let project of availableProjects">
           <td class="hidden">{{project.ProjectId}}</td>
           <td>{{project.Name}}</td>
           <td>{{project.Priority}}</td>
           <td>{{project.StartDate}}</td>
           <td>{{project.EndDate}}</td>
           <td>
-            <button (click)="editPrject(project)" class="btn btn-info">Update</button>
-            <button (click)="deleteProject(project)" style="margin-left: 20px;" class="btn btn-info">Discard</button>
+            <button (click)="editProject(project)" class="btn btn-primary">Update</button>
+            <button (click)="deleteProject(project)" style="margin-left: 20px;" class="btn btn-danger">Discard</button>
           </td>
         </tr>
       </tbody>
