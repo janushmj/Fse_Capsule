@@ -68,7 +68,7 @@ export class AddProjectComponent implements OnInit {
       this._taskService.addProject(this.addProject).subscribe(
         result => {
           alert('Project Saved Successfully');
-          this.searchProjects;
+          this.searchProjects();
         }
       );
     }
