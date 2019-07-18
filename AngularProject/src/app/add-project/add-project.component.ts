@@ -156,7 +156,7 @@ export class AddProjectComponent implements OnInit {
     newProject(){
       this.addProject = new Project();
     }
-    cancelUser(){
+    cancelProject(){
       this.addProject = new Project();
     }
   }
