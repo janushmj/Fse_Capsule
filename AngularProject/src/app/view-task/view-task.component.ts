@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class ViewTaskComponent implements OnInit {
   public _taskService!: TaskService;
   public availableTasks!: Task[];
+  public start: string = new Date().toISOString().split('T')[0];
+  public end: string = new Date().toISOString().split('T')[0];
   public parentTask;
   public taskSearch: TaskSearch = new TaskSearch();
   constructor(private taskService: TaskService, private router: Router) {
