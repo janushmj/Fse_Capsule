@@ -13,6 +13,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AddProjectComponent } from '../add-project/add-project.component';
 import { AddUserComponent } from './add-user.component';
+import { ViewTaskComponent } from '../view-task/view-task.component';
 
 describe('AddUserComponent', () => {
   let component: AddUserComponent;
@@ -24,6 +25,7 @@ describe('AddUserComponent', () => {
         AppComponent,
         AddTaskComponent,
         AddProjectComponent,
+        ViewTaskComponent,
         UpdateTaskComponent],
         imports: [
           BrowserModule,

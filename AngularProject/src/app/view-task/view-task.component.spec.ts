@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AddUserComponent } from '../add-user/add-user.component';
+import { AddProjectComponent } from '../add-project/add-project.component';
 
 describe('ViewTaskComponent', () => {
   let component: ViewTaskComponent;
@@ -23,6 +25,8 @@ describe('ViewTaskComponent', () => {
         AppComponent,
         AddTaskComponent,
         ViewTaskComponent,
+        AddUserComponent,
+        AddProjectComponent,
         UpdateTaskComponent],
         imports: [
           BrowserModule,
